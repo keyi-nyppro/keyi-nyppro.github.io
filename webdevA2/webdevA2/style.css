@@ -711,7 +711,7 @@ footer p {
         opacity: 0;
         transform: translateY(50px);
         transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-        font-size: 15px;
+        font-size: 13px;
     }
     
     #mobile-nav ul {
@@ -753,5 +753,6 @@ footer p {
     footer p {
         font-size: 15px;
         font-family: 'Crimson';
+        padding: 0px 20px;
     }
 }
