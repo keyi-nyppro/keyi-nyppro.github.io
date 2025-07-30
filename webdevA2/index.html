@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script src="main.js" defer></script>
+
+    <title>Chinese Chess</title>
+</head>
+
+<body>
+    <section id="chess">
+        <img src="images/nav_img.jpg" alt="Chess" title="Chess" id="chess-img">
+
+        <div id="textOnImg">
+            <div id="title">Chinese Chess <br> Xiang Qi 象棋</div>
+
+            <div>
+                <button id="btnFS">Enter Full Screen</button>
+            </div>
+        </div>
+    </section>
+
+    <nav id="main-nav">
+        <div id="background_nav">
+            <img src="images/background.jpg" alt="background of xiangqi" title="background of xiangqi" id="background_img">
+
+            <h5>Background of Xiang Qi</h5>
+            <p>Played for over 1,000 years across China</p>
+        </div>
+
+        <div id="chess_nav">
+            <img src="images/pieces_of_chess_.jpg" alt="pieces of chess" title="pieces of chess" id="chess_img">
+
+            <h5>Chess Pieces of Xiang Qi</h5>
+            <p>Every piece on the board tells a story of war, wisdom, and balance</p>
+        </div>
+
+        <div id="play_type_nav">
+            <img src="images/play_type.jpg" alt="play type of chinese chess" title="play type of chinese chess" id="type_img">
+
+            <h5>Play Types</h5>
+            <p>Whether in open battle or under the veil of mystery, Xiangqi challenges both the seen and the unseen</p>
+        </div>
+    </nav>
+
+    <nav id="mobile-nav">
+        <ul>
+            <li id="mobile-btn1">Background</li>
+            <li id="mobile-btn2">Chess Pieces</li>
+            <li id="mobile-btn3">Play Types</li>
+        </ul>
+    </nav>
+
+    <main id="pagecontainer">
+
+        <!-- Background of XiangQi -->
+        <section class="page" id="page1">
+            <section id="background_origin">
+                <h4>📜 Origin</h4>
+
+                <p><b>Xiangqi</b>, is also known as <b>Chinese Chess</b>, is a strategy board game that traces its roots back over <b>1,000 years</b>, making it one of the <b>oldest forms of chess in the world</b>.</p>
+
+                <ul>
+                    <li>The word "<b>象棋</b>" literally means "Elephant Game" or "Image Game".</li>
+                    <li>It is believed to have evolved from <b>Chaturanga</b>, an ancient Indian board game that also gave rise to Western Chess and Shogi (Japanese Chess).</li>
+                    <li>Xiangqi developed <b>independently in China</b>, incorporating local military culture, philosophy, and symbolism.</li>
+                </ul>
+            </section>
+
+            <br>
+
+            <section id="background_timeline" class="content-box hidden">
+                <h4>Historical Timeline 📆</h4>
+
+                <div class="timeline">
+                    <div class="timeline-item" data-year="475 BCE">
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-content">
+                            <h5>Warring States (475 - 221 BCE)</h5>
+                            <p>Early strategic ear simulations were played by generals. Some scholars trace Xiangqi's concept to this era.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-year="206 BCE">
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-content">
+                            <h5>Han Dynasty (206 BCE - 220 CE)</h5>
+                            <p>First references to a photo-chess game appear in literature.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-year="618">
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-content">
+                            <h5>Tang Dynasty (618 - 907)</h5>
+                            <p>Xiangqi begins to take a form closer to what we know today. The game's popularity spreads among scholats and nobles.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-year="960">
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-content">
+                            <h5>Song Dynasty (960 - 1279)</h5>
+                            <p>Xiangqi becomes standardized with a layout including the <b>river</b>, <b>palace</b>, and <b>distinct pieces</b>. Manuals and strategy books begin to appear.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-year="1368">
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-content">
+                            <h5>Ming & Qing Dynasties (1368 - 1912)</h5>
+                            <p>The game is fully codified. It becomes a favorite leisure activity across all social classes.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-year="Mordern">
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-content">
+                            <h5>Mordern Era</h5>
+                            <p>Xiangqi is widely played across China, Taiwan, Vietnam, and Chinese communities worldwide. International tournaments and online platforms bring global recognition.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <br>
+
+            <section id="background_culture">
+                <h4>🐉 Cultural Significance</h4>
+
+                <ul>
+                    <li>Xiangqi reflects <b>ancient Chinese warface</b> -- generals, soldiers, chariots, and cannons on a battlefield.</li>
+                    <li>The <b>board</b> includes symbolic elements like the "<b>river</b>"<b>（楚河汉界）</b>representing the historic divide between the Chu and Han kingdoms.</li>
+                    <li>Considered a key part of <b>Chinese intellectual tradition</b>, often played in parks, schools, and homes.</li>
+                </ul>
+            </section>
+        </section>
+
+        <!-- Chess Pieces of Xiangqi -->
+        <section class="page" id="page2">
+            <section id="pieces-con">
+                <div id="pieces-text-con">
+                    <h3>Description of Pieces of Xiangqi</h3>
+                    <p>Let's click on the chess!</p>
+                </div>
+                
+                <img src="images/chess_board.png" alt="Chess Board" title="Chess Board" id="chess-board" usemap="#image-map">
+                
+                <map name="image-map">
+                    <area target="" alt="Chariot" title="Chariot" href="" coords="21,22,15" shape="circle" data-piece="Chariot">
+                    <area target="" alt="Horse" title="Horse" href="" coords="58,21,14" shape="circle" data-piece="Horse">
+                    <area target="" alt="Elephant" title="Elephant" href="" coords="97,22,13" shape="circle" data-piece="Elephant">
+                    <area target="" alt="Advisor" title="Advisor" href="" coords="134,21,14" shape="circle" data-piece="Advisor">
+                    <area target="" alt="General" title="General" href="" coords="172,21,14" shape="circle" data-piece="General">
+                    <area target="" alt="Advisor" title="Advisor" href="" coords="211,21,13" shape="circle" data-piece="Advisor">
+                    <area target="" alt="Elephant" title="Elephant" href="" coords="248,21,14" shape="circle" data-piece="Elephant">
+                    <area target="" alt="Horse" title="Horse" href="" coords="287,20,14" shape="circle" data-piece="Horse">
+                    <area target="" alt="Chariot" title="Chariot" href="" coords="324,20,14" shape="circle" data-piece="Chariot">
+                    <area target="" alt="Cannon" title="Cannon" href="" coords="58,100,14" shape="circle" data-piece="Cannon">
+                    <area target="" alt="Cannon" title="Cannon" href="" coords="288,98,14" shape="circle" data-piece="Cannon">
+                    <area target="" alt="Soldier" title="Soldier" href="" coords="23,139,14" shape="circle" data-piece="Soldier">
+                    <area target="" alt="Soldier" title="Soldier" href="" coords="97,139,14" shape="circle" data-piece="Soldier">
+                    <area target="" alt="Soldier" title="Soldier" href="" coords="174,137,13" shape="circle" data-piece="Soldier">
+                    <area target="" alt="Soldier" title="Soldier" href="" coords="250,136,13" shape="circle" data-piece="Soldier">
+                    <area target="" alt="Soldier" title="Soldier" href="" coords="322,136,14" shape="circle" data-piece="Soldier">
+                    <area target="" alt="Soldier" title="Soldier" href="" coords="21,254,13" shape="circle" data-piece="Soldier">
+                    <area target="" alt="Soldier" title="Soldier" href="" coords="97,255,13" shape="circle" data-piece="Soldier">
+                    <area target="" alt="Soldier" title="Soldier" href="" coords="172,254,14" shape="circle" data-piece="Soldier">
+                    <area target="" alt="Soldier" title="Soldier" href="" coords="248,254,14" shape="circle" data-piece="Soldier">
+                    <area target="" alt="Soldier" title="Soldier" href="" coords="325,254,14" shape="circle" data-piece="Soldier">
+                    <area target="" alt="Cannon" title="Cannon" href="" coords="59,293,14" shape="circle" data-piece="Cannon">
+                    <area target="" alt="Cannon" title="Cannon" href="" coords="286,292,13" shape="circle" data-piece="Cannon">
+                    <area target="" alt="Chariot" title="Chariot" href="" coords="20,369,14" shape="circle" data-piece="Chariot">
+                    <area target="" alt="Horse" title="Horse" href="" coords="57,370,14" shape="circle" data-piece="Horse">
+                    <area target="" alt="Elephant" title="Elephant" href="" coords="95,369,14" shape="circle" data-piece="Elephant">
+                    <area target="" alt="Advisor" title="Advisor" href="" coords="134,369,13" shape="circle" data-piece="Advisor">
+                    <area target="" alt="General" title="General" href="" coords="173,370,13" shape="circle" data-piece="General">
+                    <area target="" alt="Advisor" title="Advisor" href="" coords="210,370,13" shape="circle" data-piece="Advisor">
+                    <area target="" alt="Elephant" title="Elephant" href="" coords="250,369,13" shape="circle" data-piece="Elephant">
+                    <area target="" alt="Horse" title="Horse" href="" coords="288,369,13" shape="circle" data-piece="Horse">
+                    <area target="" alt="Chariot" title="Chariot" href="" coords="325,369,14" shape="circle" data-piece="Chariot">
+                </map>
+                
+                <div id="chessModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                
+                        <h5 id="modal-title">Chess Title</h5>
+                        <div id="modal-description">Chess Description</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MCQ -->
+            <section id="mcq">
+                <div id="mcq-con">
+                    <h4>🤔 MCQ</h4>
+        
+                    <p id="question">1. Which chess piece is the strongest piece?</p>
+
+                    <div id="ans-btn">
+                        <button class="btn">General</button>
+                        <button class="btn">Cannon</button>
+                        <button class="btn" data-corre="true">Chariot</button>
+                        <button class="btn">Soldier</button>
+                    </div>
+
+                    <div id="next-btn-con">
+                        <button id="next-btn">Next</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Play Types of Xiangqi-->
+        <section class="page" id="page3">
+            <div class="play-type-wrap">
+
+                <!-- Standard 1v1 -->
+                <section class="playtype-con" id="standard-con">
+                    <h4>🧱 Standard 1v1</h4>
+                    <img src="images/chess_board.png" alt="standard play type" title="standard play type" id="standard-img">
+
+                    <div class="flip-card-con">
+                        <div class="flip-card">
+                            <div id="description-standard" class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h5>🔹Description</h5>
+                                </div>
+
+                                <div class="flip-card-back">
+                                    <p>
+                                        Standard 1v1 Xiangqi is the classic version of Chinese Chess played between two players <br><br>
+                                        It emphasizes strategy, defense, and tactical play, deeply rooted in Chinese military philosophy
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card">
+                            <div id="setup-standard" class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h5>🧩 Setup</h5>
+                                </div>
+
+                                <div class="flip-card-back">
+                                    <p class="page3-text"><br><br><br><br><br><br><br><br><br><br><br><br>
+                                        <b>Board:</b><br> 9 vertical lines x 10 horizontal lines <br><br>
+                                        <b>River:</b><br> Divides the two sides in the middle, labeled as 楚河汉界 (Chu River and Han Border) <br><br>
+                                        <b>Palaces:</b><br> 3x3 suqare areas in the center of each player's side <br><br>
+                                        <b>Pieces:</b><br> <i>Each side (red & black) has:</i><br>
+                                        1 General, 2 Advisors, 2 Elephants, 2 Horses, 2 Chariots, 2 Cannons, 2 Soldiers
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card">
+                            <div id="rules-standard" class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h5>📜 Rules</h5>
+                                </div>
+
+                                <div class="flip-card-back">
+                                    <p class="page3-text"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                                        <b>Turn-Based:</b><br> Red moves first, followed by Black <br><br>
+                                        <b>Movement:</b><br> Each piece has specific movement patterns <br> (please refer to the 👉<a href="#pieces-con" id="linkToPieces">chess pieces</a>👈) <br><br>
+                                        <b>Restrictions:</b><br>
+                                        Generals can't face each other directly without another piece between them <br><br>
+                                        <b>Elephants</b><br> cannot cross the river <br><br>
+                                        <b>Advisors and Generals</b><br> must remain inside the palace <br><br>
+                                        <b>Goal:</b><br> Checkmate the opponent's General
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flip-card">
+                            <div id="features-standard" class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h5>✨ Key Features</h5>
+                                </div>
+
+                                <div class="flip-card-back">
+                                    <p class="page3-text"><br><br><br><br><br><br><br>
+                                        👀 Full visibility-players see all pieces <br><br>
+                                        🚩 Strong emphasis on tactical formations <br><br>
+                                        📚 A rich tradition with books and theories for openings, midgames and endgames <br><br>
+                                        🤯 Highly strategic with minimal randomness
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Banqi -->
+                <section class="playtype-con" id="banqi-con">
+                    <h4>🕶️ Banqi (Dark Chess)</h4>
+                    <img src="images/banqi.jpeg" alt="banqi" title="banqi" id="banqi-img">
+
+                    <div class="flip-card-con">
+                        <div class="flip-card">
+                            <div id="description-banqi" class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h5>🔹Description</h5>
+                                </div>
+
+                                <div class="flip-card-back">
+                                    <p>
+                                        Banqi is a variant of Xiangqi played with the same pieces, but placed face down and turned over gradually <br><br>
+                                        It is faster-paced, involving both luck and strategy
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card">
+                            <div id="setup-banqi" class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h5><h5>🧩 Setup</h5></h5>
+                                </div>
+
+                                <div class="flip-card-back">
+                                    <p class="page3-text"><br><br><br><br><br><br><br><br>
+                                        <b>Board:</b><br> 4 rows x 8 columns (half of a Standard Xiangqi Board) <br><br>
+                                        <b>Pieces:</b><br> All 32 Xiangqi pieces are shuffled and placed face down randomly on the board <br><br>
+                                        <b>No distinction</b><br> initially between Red or Black <br><br>
+                                        Piece colors are revealed as flipped
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flip-card">
+                            <div id="rules-banqi" class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h5>📜 Rules</h5>
+                                </div>
+
+                                <div class="flip-card-back">
+                                    <p class="page3-text"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                                        <b>Players take turns to:</b><br>
+                                    </p>
+
+                                    <ul class="page3-text">
+                                        <li>Flip over a facedown piece <br> (first move must be a flip)</li>
+                                        <li>Or move/capture with a <br> face-up piece</li>
+                                        <li>Once a piece is flipped, its color <br> and rank are known</li>
+                                    </ul>
+
+                                    <p class="page3-text"><br>
+                                        <b>Capture Hierarchy:</b><br> Pieces can capture others of the same or lower rank <br><br>
+                                        <b>Exception:</b><br> Soldier can capture General <br><br>
+                                        <b>Cannon:</b><br> Can only capture by jumping exactly one piece between itself and the target <br><br>
+                                        <b>No check/checkmate</b><br><br>
+                                        <b>Game ends</b><br> when one player cannot move or has no pieces left
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card">
+                            <div id="features-banqi" class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h5>✨ Key Features</h5>
+                                </div>
+
+                                <div class="flip-card-back">
+                                    <p class="page3-text"><br><br><br><br><br><br><br><br>
+                                        😲 Hidden information introduces surprise and excitement <br><br></span>
+                                        ⌛ Fast-paced and casual-popular in parks and among children <br><br>
+                                        😣 Simple to start, but still rewards tactical thinking and memory <br><br>
+                                        🔮 More luck-driven compared to standard Xiang Qi
+                                    </p>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Mini Game -->
+        <section id="mini-game">
+            <h4>🕹️ Mini Game</h4>
+
+            <div id="mini-game-container">
+                <button id="resetMiniGame">Restart</button>
+                <div id="mini-board"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <h6>Scan Me!</h6>        
+        <img src="images/background.jpg" alt="QR Code" title="QR Code" id="qrCode">
+
+        <p>&copy; 2025 Chinese Chess Learning Website by 01_LingKeYi_254485U. All rights reserved.</p>
+    </footer>
+</body>
+</html>
