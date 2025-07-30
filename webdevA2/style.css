@@ -711,6 +711,7 @@ footer p {
         opacity: 0;
         transform: translateY(50px);
         transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        font-size: 13px;
     }
     
     #mobile-nav ul {
@@ -725,7 +726,6 @@ footer p {
         text-decoration: none;
         color: white;
         text-align: center;
-        font-size: 20px;
         font-family: 'Cinzel';
     }
 
@@ -739,6 +739,12 @@ footer p {
         flex: 1 1 100%;
     }
 
+    /* Mini Game */
+    .mini-game {
+        width: 100px;
+        height: auto;
+    }
+
     /* Footer */
     footer h6, #qrCode {
         display: none;
@@ -747,5 +753,6 @@ footer p {
     footer p {
         font-size: 15px;
         font-family: 'Crimson';
+        padding: 0px 20px;
     }
 }
