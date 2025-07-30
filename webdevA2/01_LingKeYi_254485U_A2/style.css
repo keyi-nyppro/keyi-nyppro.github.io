@@ -1,0 +1,757 @@
+@font-face {
+    font-family: 'Noto Serif English';
+    src: url('fonts/NotoSerif.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Cinzel';
+    src: url('fonts/Cinzel.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Crimson';
+    src: url('fonts/Crimson.woff') format('woff');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #5b0f0f;
+}
+
+/* Navigation Bar */
+#chess {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    background-color: #5b0f0f;
+    position: relative;
+}
+
+#chess::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background: linear-gradient(to bottom, transparent, #5b0f0f);
+    height: 25%;
+    z-index: 2;
+}
+
+#chess img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+    z-index: 1;
+    object-fit: cover;
+}
+
+#textOnImg {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-family: 'Noto Serif English';
+    font-size: 100px;
+    text-shadow: 0 0 5px #500000, 0 0 10px #1b0500, 0 0 20px #130800, 0 0 30px #000000;
+    font-weight: bold;
+    z-index: 3;
+}
+
+#btnFS {
+    padding: 10px 15px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+    box-shadow: 0 0 5px #500000, 0 0 10px #1b0500, 0 0 20px #130800, 0 0 30px #000000;
+}
+
+#main-nav {
+    top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: transform 0s, opacity 0s;
+    pointer-events: none;
+    z-index: 999;
+}
+
+#main-nav.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+#background_img,
+#chess_img,
+#type_img {
+    height: 140px;
+}
+
+#background_nav,
+#chess_nav,
+#play_type_nav {
+    background-color: #4a0b0b;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    width: 250px;
+}
+
+#background_nav h5,
+#chess_nav h5,
+#play_type_nav h5 {
+    padding-top: 10px;
+    text-align: center;
+    font-family: 'Cinzel';
+    font-size: 15px;
+    color: #fdf5e6;
+}
+
+#background_nav p,
+#chess_nav p,
+#play_type_nav p {
+    padding-top: 10px;
+    text-align: center;
+    font-family: 'Crimson';
+    color: #fdf5e6;
+}
+
+#mobile-nav {
+    display: none;
+}
+
+/* Content */
+/* Page 1 - background of Xiangqi */
+#page1 {
+    padding: 20px;
+}
+
+#page1 p {
+    font-family: 'Crimson';
+    padding-bottom: 10px;
+    color: #4f0f0f;
+}
+
+#background_origin,
+#background_culture {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 5px solid #ddb892;
+    border-radius: 10px;
+    background-color: #f4e9dc;
+    padding: 40px;
+    text-align: center;
+}
+
+#page1 h4 {
+    font-family: 'Cinzel';
+    margin-bottom: 25px;
+    font-size: 25px;
+    color: #4f0f0f;
+}
+
+#background_origin ul li,
+#background_culture ul li {
+    list-style-type: none;
+    padding: 13px 0px;
+    font-family: 'Crimson';
+    color: #4f0f0f;
+}
+
+#background_timeline {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 40px;
+    background-color: #f4e9dc;
+    border: 5px solid #ddb892;
+    text-align: center;
+    position: relative;
+    border-radius: 10px;
+}
+
+#background_timeline h4 {
+    font-family: 'Cinzel';
+    font-size: 28px;
+    margin-bottom: 40px;
+}
+
+.timeline {
+    position: relative;
+    margin: auto;
+    padding-left: 30px;
+    max-width: 700px;
+}
+
+.timeline::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 30px;
+    width: 4px;
+    background-color: #c9a27e;
+}
+
+.timeline-item {
+    position: relative;
+    margin: 40px 0;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: opacity, transform;
+}
+
+.timeline-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 21px;
+    top: 10px;
+    width: 18px;
+    height: 18px;
+    background-color: #701212;
+    border: 4px solid #f4e9dc;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.timeline-content {
+    margin-left: 50px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid #c9a27e;
+    text-align: left;
+    box-shadow: 0 2px 8px #00001a;
+}
+
+.timeline h5 {
+    padding-bottom: 15px;
+    font-size: 18px;
+    color: #4f0f0f;
+}
+
+/* Page 2 - chess pieces of Xiangqi */
+#pieces-con {
+    text-align: center;
+}
+
+#pieces-text-con {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 5px solid transparent;
+    padding: 10px 0px;
+}
+
+#pieces-con h3 {
+    font-family: 'Cinzel';
+    color: #f4e9dc;
+}
+
+#pieces-con p {
+    font-family: 'Crimson';
+    margin-top: 15px;
+    color: #f4e9dc;
+}
+
+#chess-board {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #f4e9dc;
+    margin: 10% auto;
+    padding: 20px;
+    border: 5px solid #ddb892;
+    width: 300px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}
+
+#modal-title {
+    color: #2c1a14;
+    font-family: 'Crimson';
+    font-size: 16px;
+}
+
+#modal-description {
+    color: #2c1a14;
+    display: block;
+    margin-top: 10px;
+    font-family: 'Crimson';
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* MCQ */
+#mcq {
+    padding: 20px;
+    background-color: #fff8f0;
+    font-family: 'Crimson';
+    color: #2c1a14;
+    max-width: 400px;
+    margin: 40px auto 0px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #000033;
+}
+
+#mcq h4 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#question {
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#ans-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    pointer-events: auto;
+    z-index: 10;
+    position: relative;
+    padding: 0px 20px;
+}
+
+.btn {
+    padding: 12px;
+    font-family: 'Crimson';
+    font-size: 16px;
+    background-color: #eeeeee;
+    border: 2px solid #cccccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    pointer-events: auto;
+}
+
+.btn:hover {
+    background-color: #dddddd;
+    transform: scale(1.02);
+}
+
+#next-btn-con {
+    text-align: center;
+}
+
+#next-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Crimson';
+    background-color: #4a0b0b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    transition: background-color 0.3s;
+}
+
+#next-btn:hover {
+    background-color: #7c1e1e;
+}
+
+/* Page 3 - play types */
+.play-type-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.playtype-con {
+    flex: 1 1 500px;
+    max-width: 600px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 5px solid #ddb892;
+    background-color: #f4e9dc;
+    padding: 20px;
+}
+
+.playtype-con img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 0px auto 15px auto;
+}
+
+#page3 h4 {
+    font-family: 'Cinzel';
+    font-size: 20px;
+    text-align: center;
+    color: #4f0f0f;
+    margin-bottom: 10px;
+}
+
+#page3 h5 {
+    font-family: 'Crimson';
+    font-size: 18px;
+}
+
+.flip-card-con {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 180px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateX(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    background-color: #ffffff;
+    font-family: 'Crimson';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 1px 3px #000033;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow-y: auto;
+}
+
+.flip-card-front {
+    font-weight: bold;
+    font-size: 16px;
+    color: #7b3f00;
+}
+
+.flip-card-back {
+    transform: rotateX(180deg);
+    font-size: 14px;
+    color: #653401;
+    padding: 40px 20px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    max-height: 100%;
+}
+
+.playtype-con p {
+    font-size: 15px;
+}
+
+#rules-standard a {
+    text-decoration: none;
+    color: #653401;
+}
+
+#rules-standard a:hover {
+    color: black;
+}
+
+.page3-text {
+    line-height: 1.6;
+}
+
+/* Mini Game */
+#mini-board {
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(4, 50px);
+}
+
+.mini-cell {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 10px;
+    cursor: pointer;
+    border: 2px solid #333;
+}
+
+
+/* .banqi-cell.revealed {
+    background-color: #fff8f0;
+    font-weight: bold;
+} */
+
+/* Show 9 vertical lines × 10 horizontal lines grid */
+#mini-game {
+    text-align: center;
+    margin: 30px auto;
+}
+
+#mini-game h4 {
+    font-family: 'Noto Serif English';
+    font-size: 24px;
+    color: #fdf5e6;
+    margin-bottom: 10px;
+}
+
+#mini-game-container {
+    position: relative;
+    background-color: black;
+    width: 520px;
+    height: 550px;
+    border: 5px solid #ddb892;
+    border-radius: 12px;
+    margin: 0 auto;
+}
+
+#board-img {
+    display: block;
+    border-radius: 7px;
+    margin: 0 auto;
+}
+
+#pieces-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* .piece {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    font-size: 20px;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 2px solid #000;
+    z-index: 5;
+} */
+
+.piece[data-color="R"] {
+    color: red;
+    border-color: red;
+}
+
+.piece[data-color="B"] {
+    color: black;
+    border-color: black;
+}
+
+/* Footer */
+footer {
+    background-color: #4f0f0f;
+    color: #fdf5e6;
+    text-align: center;
+    padding: 40px 0;
+    border-top: 2px solid #a0522d;
+    margin-top: 40px;
+}
+
+footer img {
+    height: auto;
+    width: 120px;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+footer h6 {
+    margin-top: 15px;
+    font-size: 40px;
+}
+
+footer p {
+    font-size: 18px;
+    font-family: 'Crimson';
+    margin-top: 30px;
+}
+
+/* Transition of the page */
+.page {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    display: none;
+}
+
+.page.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 20px;
+}
+
+/* Transition of page 1 */
+.slide-right {
+    transform: translateX(100%);
+}
+
+.slide-right.active {
+    display: block;
+    transform: translateX(0);
+}
+
+/* Transition of page 2 */
+.slide-left {
+    transform: translateX(-100%);
+}
+
+.slide-left.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Transition of page 3 */
+.fade-scale {
+    transform: scale(0.8);
+}
+
+.fade-scale.active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+@media (max-width: 800px) {
+    /* Navigation Bar */
+    #chess {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    #chess img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    #chess div {
+        font-size: 50px;
+    }
+
+    #main-nav {
+        display: none;
+    }
+
+    #mobile-nav {
+        display: block;
+        margin-top: 0px;
+        margin-bottom: 50px;
+        border: 2px solid transparent;
+        background-color: #4f0f0f;
+        padding: 30px;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        font-size: 10px;
+    }
+    
+    #mobile-nav ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    
+    #mobile-nav li {
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        font-family: 'Cinzel';
+    }
+
+    /* Page 1 */
+    .timeline {
+        right: 30px;
+    }
+
+    /* Page 3 */
+    .playtype-con {
+        flex: 1 1 100%;
+    }
+
+    /* Mini Game */
+    .mini-game {
+        width: 100px;
+        height: auto;
+    }
+
+    /* Footer */
+    footer h6, #qrCode {
+        display: none;
+    }
+
+    footer p {
+        font-size: 15px;
+        font-family: 'Crimson';
+    }
+}
