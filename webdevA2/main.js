@@ -379,200 +379,138 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // JS for Mini Game
-    // const pieces = [
-    //     "General", "Advisor", "Elephant", "Horse", "Chariot", "Cannon", "Soldier"
-    // ];
+    const pieces = [
+        {name: "General", symbol: "G"},
+        {name: "Advisor", symbol: "A"},
+        {name: "Elephant", symbol: "E"},
+        {name: "Horse", symbol: "H"},
+        {name: "Cannon", symbol: "C"},
+    ];
 
-    // const pieceRanks = {
-    //     General: 7,
-    //     Advisor: 6,
-    //     Elephant: 5,
-    //     Horse: 4,
-    //     Chariot: 3,
-    //     Cannon: 2,
-    //     Soldier: 1,
-    // }
+    let gameScore = 0;
+    let intervalId;
+    let gameTimer;
 
-    // let board = [];
+    let timerInterval;
+    const timerDisplay = document.getElementById("timer");
 
-    // // Shuffle pieces
-    // function shuffle(pieces) {
-    //     for (let i = pieces.length - 1; i > 0; i--) {
-    //         const j = Math.floor(Math.random() * (i + 1));
+    const container = document.getElementById("game-con-right");
+    const scoreDisplay = document.getElementById("score");
+    const startBtn = document.getElementById("start-game");
+    startBtn.addEventListener("click", startGame);
 
-    //         [pieces[i], pieces[j]] = [pieces[j], pieces[i]];
-    //     }
-    // }
+    function startCountdown() {
+        clearInterval(timerInterval);
+        let totalSeconds = 120;
+        timerDisplay.textContent = "Time Left: 2:00";
 
-    // function generateBoard() {
-    //     const allPieces = [];
+        timerInterval = setInterval(() => {
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
 
-    //     for (let color of ["red", "black"]) {
-    //         for (let i = 0; i < 2; i++) {
-    //             for (let piece of pieces) {
-    //                 allPieces.push({ type: piece, color: color, revealed: false });
-    //             }
-    //         }
-    //     }
+            timerDisplay.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-    //     shuffle(allPieces);
-    //     board = allPieces.slice(0, 16);
-    // }
-
-    // function createMiniGameBoard() {
-    //     const miniBoard = document.getElementById("mini-board");
-    //     miniBoard.innerHTML = "";
-
-    //     board.forEach((piece, index) => {
-    //         const cell = document.createElement("div");
-
-    //         cell.classList.add("mini-cell");
-    //         cell.dataset.index = index;
-    //         cell.addEventListener("click", () => handlePieceClick(index, cell));
-    //         miniBoard.appendChild(cell);
-    //     });
-    // }
-
-    // function handlePieceClick(index, cell) {
-    //     const piece = board[index];
-
-    //     // If the piece is hidden, reveal
-    //     if (!piece.revealed && piece.type) {
-    //         piece.revealed = true;
-    //         cell.classList.add("revealed", piece.color);
-    //         cell.textContent = `${piece.type}`;
-    //     }
-
-    //     else {
-    //         const selectedIndex = board.findIndex((p, i) =>
-    //             p.revealed && i !== index && document.querySelectorAll(".mini-cell")[i].classList.contains("selected")
-    //         );
-
-    //         if (selectedIndex >= 0 && selectedIndex !== index) {
-    //             const attacker = board[selectedIndex];
-    //             const defender = piece;
-
-    //             if (attacker.color !== defender.color) {
-    //                 if ((attacker.type === "Soldier" && defender.type === "General") || pieceRanks[attacker.type] >= pieceRanks[defender.type]) {
-
-    //                     // Capture
-    //                     board[index] = attacker;
-    //                     board[selectedIndex] = { type: "", color: "", revealed: false };
-    //                     updateBoardDisplay();
-    //                 }
-
-    //                 else {
-    //                     alert("Can't captire: attacker is weaker");
-    //                 }
-    //             }
-
-    //             else {
-    //                 alert("Can't capture: same color");
-    //             }
-
-    //             document.querySelectorAll(".mini-cell").forEach(cell => cell.classList.remove("selected"));
-    //         }
-
-    //         else {
-    //             cell.classList.toggle("selected");
-    //         }
-    //     }
-    // }
-
-    // function updateBoardDisplay() {
-    //     const cells = document.querySelectorAll(".mini-cell");
-
-    //     board.forEach((piece, i) => {
-    //         const cell = cells[i];
-    //         cell.classList = "mini-cell";
-
-    //         if (piece.revealed && piece.type) {
-    //             cell.classList.add("revealed", piece.color);
-    //             cell.textContent = piece.type;
-    //         }
-
-    //         else {
-    //             cell.textContent = "";
-    //         }
-    //     });
-    // }
-
-    // document.getElementById("resetMiniGame").addEventListener("click", () => {
-    //     generateBoard();
-    //     createMiniGameBoard();
-    // });
-
-    // window.addEventListener("DOMContentLoaded", () => {
-    //     generateBoard();
-    //     createMiniGameBoard();
-    // });
-
-    const miniBoard = document.getElementById("mini-board");
-    const resetButton = document.getElementById("resetMiniGame");
-
-    const pieceCounts = {
-        General: 1,
-        Advisor: 2,
-        Elephant: 2,
-        Horse: 2,
-        Chariot: 2,
-        Cannon: 2,
-        Soldier: 5
-    };
-
-    const colors = ["Red", "Black"];
-    const pieceTypes = Object.keys(pieceCounts);
-
-    // Generate 16 random pieces
-    function generatePieces() {
-        const allPieces = [];
-        
-        for (const color of colors) {
-            for (const piece of pieceTypes) {
-                const count = pieceCounts[piece];
-
-                for (let i = 0; i < count; i++) {
-                    piece.push({color, type: piece});
-                }
+            if (totalSeconds <= 0) {
+                clearInterval(timerInterval);
             }
-        }
 
-        // Shuffle pieces
-        for (let i = pieces.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [piece[i], piece[j] = [piece[j], piece[i]]];
-        }
-
-        return allPieces;
+            totalSeconds--;
+        }, 1000);
     }
 
-    // Create the 4x4 board
-    function initMiniGame() {
-        miniBoard.innerHTML = "";
+    function startGame() {
+        if (intervalId) clearInterval(intervalId);
+        if (gameTimer) clearTimeout(gameTimer);
+        if (timerInterval) clearInterval(timerInterval);
 
-        const pieceList = generatePieces();
+        // clear the board
+        container.innerHTML = " ";
 
-        for (let i = 0; i < 32; i++) {
-            const cell = document.createElement("div");
-            cell.className = "mini-cell";
-            cell.dataset.color = pieceList[i].color;
-            cell.dataset.type = pieceList[i].type;
-            cell.textContent = ""; // hide the piece initially
+        gameScore = 0;
+        scoreDisplay.textContent = "Score: 0";
 
-            cell.addEventListener("click", () => {
-                if (cell.textContent === "") {
-                    cell.textContent = cell.dataset.type;
-                    cell.classList.add(pieceList[i].color);
-                    cell.style.backgroundColor = "#fff";
+        // Reset timer display
+        timerDisplay.textContent = "Time Left: 2:00";
+
+        // Change button text to "Restart"
+        startBtn.textContent = "Restart";
+
+        // reset and start countdown
+        startCountdown();
+
+        // change button text to "Restart"
+        startBtn.textContent = "Restart";
+
+        intervalId = setInterval(() => {
+            const piece = document.createElement("div");
+            piece.classList.add("piece");
+
+            const randomPiece = pieces[Math.floor(Math.random() * pieces.length)];
+            piece.textContent = randomPiece.symbol;
+
+            const pieceSize = 48;
+            const boardWidth = 320;
+            const boardHeight = 429;
+
+            const maxX = boardWidth - pieceSize;
+            const maxY = boardHeight - pieceSize;
+
+            // random position
+            piece.style.position = "absolute";
+            piece.style.left = `${Math.random() * maxX}px`;
+            piece.style.top = `${Math.random() * maxY}px`;
+
+            // add click logic
+            piece.addEventListener("click", () => {
+                if (randomPiece.name === "General") {
+                    gameScore++;
+                    scoreDisplay.textContent = `Score: ${gameScore}`;
+                }
+
+                else {
+                    alert(`You have been eaten by ${randomPiece.name}!`);
+
+                    clearInterval(intervalId);
+                    clearTimeout(gameTimer);
+                    clearInterval(timerInterval);
+                    container.innerHTML = " ";
+
+                    // clear score display
+                    gameScore = 0;
+                    scoreDisplay.textContent = `Score: 0`;
+
+                    timerDisplay.textContent = "Time Left: 2:00";
+
+                    // reset button text back to "Start Game"
+                    startBtn.textContent = "Start Game";
+                }
+
+                if (container.contains(piece)) {
+                    container.removeChild(piece);
                 }
             });
 
-            miniBoard.appendChild(cell);
-        }
+            container.appendChild(piece);
+
+            // remove after 3 sec
+            setTimeout(() => {
+                if (container.contains(piece)) {
+                    container.removeChild(piece);
+                };
+            }, 3000);
+        }, 800);
+
+        gameTimer = setTimeout(() => {
+            clearInterval(intervalId);
+            clearInterval(timerInterval);
+            alert("Game Over! Your score: " + gameScore);
+
+            gameScore = 0;
+            scoreDisplay.textContent = `Score: 0`;
+
+            timerDisplay.textContent = "Time Left: 2:00";
+            
+            startBtn.textContent = "Start Game";
+        }, 120000);
     }
-
-    resetButton.addEventListener("click", initMiniGame);
-
-    // Start game on page load
-    window.addEventListener("DOMContentLoaded", initMiniGame);
 })
