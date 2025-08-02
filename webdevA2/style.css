@@ -591,25 +591,6 @@ body {
     overflow: hidden;
 }
 
-.piece {
-    position: absolute;
-    height: 15px;
-    width: 15px;
-    padding: 10px 16px;
-    background-color: #fffae6;
-    color: #222;
-    font-weight: bold;
-    border: 2px solid #b28b00;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.piece:hover {
-    transform: scale(1.1);
-}
-
 #score-display {
     font-size: 20px;
     margin-top: 10px;
@@ -763,26 +744,36 @@ footer p {
     }
 
     /* Mini Game */
+    #mini-game {
+        width: 95vw;
+        height: auto;
+        padding: 12px;
+    }
+
     #mini-game-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #game-con-left {
         width: 100%;
-        max-width: 100px;
-        margin: 0 auto;
-        padding: 10px;
+        flex: none;
+        align-items: center;
     }
 
     #game-con-right {
         width: 100%;
-        height: auto;
-    }
-
-    .piece {
-        width: 20px;
-        height: 20px;
-        font-size: 12px;
+        height: 350px;
+        margin-top: 10px;
     }
 
     #start-game {
-        width: 100%;
+        width: 80%;
+        font-size: 14px;
+    }
+
+    #timer, #game-con-left h5 {
+        font-size: 18px;
     }
 
     /* Footer */
