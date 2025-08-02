@@ -599,8 +599,6 @@ body {
     cursor: pointer;
     transition: transform 0.2s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: calc(100% - 10px);
-    max-height: calc(100% - 10px);
 }
 
 .piece:hover {
@@ -712,7 +710,6 @@ footer p {
 }
 
 @media (max-width: 800px) {
-
     /* Navigation Bar */
     #chess {
         width: 100vw;
@@ -761,13 +758,52 @@ footer p {
     }
 
     /* Page 1 */
+    #background_timeline {
+        padding: 20px;
+    }
+
     .timeline {
-        right: 30px;
+        max-width: 100%;
+        padding-left: 20px;
+    }
+    
+    .timeline::before {
+        left: 20px;
+        width: 3px;
+    }
+    
+    .timeline-item {
+        margin: 25px 0;
+        transform: translateY(20px);
+    }
+    
+    .timeline-dot {
+        left: 5px;
+        width: 14px;
+        height: 14px;
+        border-width: 3px;
+    }
+    
+    .timeline-content {
+        margin-left: 40px;
+        padding: 15px;
+        border-left-width: 4px;
+        font-size: 14px;
+    }
+    
+    .timeline h5 {
+        font-size: 16px;
+        padding-bottom: 10px;
     }
 
     /* Page 3 */
     .playtype-con {
         flex: 1 1 100%;
+    }
+
+    /* MCQ */
+    #mcq {
+        width: 85vw;
     }
 
     /* Mini Game */
