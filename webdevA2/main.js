@@ -399,6 +399,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const chessMove = new Audio("audio/chessmove.mp3");
     const chessStart = new Audio("audio/gamestart.mp3");
 
+    const miniGame = document.getElementById("mini-game");
     const container = document.getElementById("game-con-right");
     const scoreDisplay = document.getElementById("score");
     const startBtn = document.getElementById("start-game");
@@ -468,7 +469,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     gameScore++;
                     scoreDisplay.textContent = `Score: ${gameScore}`;
                     chessMove.play();
-                } else {
+                }
+                
+                else {
                     chessMove.play();
                     alert(`You have been eaten by ${randomPiece.name}!`);
 
@@ -513,6 +516,16 @@ document.addEventListener("DOMContentLoaded", function () {
     function togglePause() {
         isPaused = !isPaused;
         stopBtn.textContent = isPaused ? "Continue" : "Stop";
+    }
+
+    // Auto-stop the game when clicking outside the miniGame
+    document.addEventListener("click", autoPause);
+
+    function autoPause() {
+        if (!miniGame.contains(event.target) && !isPaused) {
+            isPaused = true;
+            stopBtn.textContent = "Continue";
+        }
     }
 
     startBtn.addEventListener("click", startGame);
