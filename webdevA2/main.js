@@ -380,16 +380,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // JS for Mini Game
     const pieces = [
-        {name: "General", symbol: "G"},
-        {name: "Advisor", symbol: "A"},
-        {name: "Elephant", symbol: "E"},
-        {name: "Horse", symbol: "H"},
-        {name: "Cannon", symbol: "C"},
+        { name: "General", symbol: "G" },
+        { name: "Advisor", symbol: "A" },
+        { name: "Elephant", symbol: "E" },
+        { name: "Horse", symbol: "H" },
+        { name: "Cannon", symbol: "C" },
     ];
 
     let gameScore = 0;
     let intervalId;
     let gameTimer;
+    let totalSeconds = 120;
+    let isPaused = false;
 
     let timerInterval;
     const timerDisplay = document.getElementById("timer");
@@ -400,53 +402,48 @@ document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById("game-con-right");
     const scoreDisplay = document.getElementById("score");
     const startBtn = document.getElementById("start-game");
-    startBtn.addEventListener("click", startGame);
+    const stopBtn = document.getElementById("stop-game");
 
     function startCountdown() {
         clearInterval(timerInterval);
-        let totalSeconds = 120;
         timerDisplay.textContent = "Time Left: 2:00";
 
         timerInterval = setInterval(() => {
-            const minutes = Math.floor(totalSeconds / 60);
-            const seconds = totalSeconds % 60;
+            if (!isPaused) {
+                const minutes = Math.floor(totalSeconds / 60);
+                const seconds = totalSeconds % 60;
 
-            timerDisplay.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                timerDisplay.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-            if (totalSeconds <= 0) {
-                clearInterval(timerInterval);
+                if (totalSeconds <= 0) {
+                    clearInterval(timerInterval);
+                }
+
+                totalSeconds--;
             }
-
-            totalSeconds--;
         }, 1000);
     }
 
     function startGame() {
-        if (intervalId) clearInterval(intervalId);
-        if (gameTimer) clearTimeout(gameTimer);
-        if (timerInterval) clearInterval(timerInterval);
+        clearInterval(intervalId);
+        clearTimeout(gameTimer);
+        clearInterval(timerInterval);
 
-        // clear the board
-        container.innerHTML = " ";
-
+        container.innerHTML = "";
         gameScore = 0;
         scoreDisplay.textContent = "Score: 0";
-
-        // Reset timer display
         timerDisplay.textContent = "Time Left: 2:00";
-
-        // Change button text to "Restart"
         startBtn.textContent = "Restart";
+        stopBtn.textContent = "Stop";
+        totalSeconds = 120;
+        isPaused = false;
 
-        // reset and start countdown
         startCountdown();
-
         chessStart.play();
 
-        // change button text to "Restart"
-        startBtn.textContent = "Restart";
-
         intervalId = setInterval(() => {
+            if (isPaused) return; // Don't spawn while paused
+
             const piece = document.createElement("div");
             piece.classList.add("piece");
 
@@ -460,35 +457,28 @@ document.addEventListener("DOMContentLoaded", function () {
             const maxX = boardWidth - pieceSize;
             const maxY = boardHeight - pieceSize;
 
-            // random position
             piece.style.position = "absolute";
             piece.style.left = `${Math.random() * maxX}px`;
             piece.style.top = `${Math.random() * maxY}px`;
 
-            // add click logic
             piece.addEventListener("click", () => {
+                if (isPaused) return;
+
                 if (randomPiece.name === "General") {
                     gameScore++;
                     scoreDisplay.textContent = `Score: ${gameScore}`;
                     chessMove.play();
-                }
-
-                else {
+                } else {
                     chessMove.play();
                     alert(`You have been eaten by ${randomPiece.name}!`);
 
                     clearInterval(intervalId);
                     clearTimeout(gameTimer);
                     clearInterval(timerInterval);
-                    container.innerHTML = " ";
-
-                    // clear score display
+                    container.innerHTML = "";
                     gameScore = 0;
                     scoreDisplay.textContent = `Score: 0`;
-
                     timerDisplay.textContent = "Time Left: 2:00";
-
-                    // reset button text back to "Start Game"
                     startBtn.textContent = "Start Game";
                 }
 
@@ -499,11 +489,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             container.appendChild(piece);
 
-            // remove after 3 sec
-            setTimeout(() => {
-                if (container.contains(piece)) {
+            // Only remove after 3 seconds if not paused
+            const removalTimeout = setTimeout(() => {
+                if (!isPaused && container.contains(piece)) {
                     container.removeChild(piece);
-                };
+                }
             }, 3000);
         }, 800);
 
@@ -514,10 +504,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             gameScore = 0;
             scoreDisplay.textContent = `Score: 0`;
-
             timerDisplay.textContent = "Time Left: 2:00";
-
             startBtn.textContent = "Start Game";
+            container.innerHTML = "";
         }, 120000);
     }
+
+    function togglePause() {
+        isPaused = !isPaused;
+        stopBtn.textContent = isPaused ? "Continue" : "Stop";
+    }
+
+    startBtn.addEventListener("click", startGame);
+    stopBtn.addEventListener("click", togglePause);
 })

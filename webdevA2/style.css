@@ -536,7 +536,6 @@ body {
 
 #mini-game h4 {
     font-size: 22px;
-    padding: 10px 0;
 }
 
 #mini-game-container {
@@ -559,10 +558,6 @@ body {
     gap: 10px;
     align-items: center;
     font-family: 'Crimson';
-}
-
-#game-con-left button {
-    margin-top: 25px;
 }
 
 #timer {
@@ -591,6 +586,25 @@ body {
     overflow: hidden;
 }
 
+.piece {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    padding: 10px 16px;
+    background-color: #fffae6;
+    color: #222;
+    font-weight: bold;
+    border: 2px solid #b28b00;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.piece:hover {
+    transform: scale(1.1);
+}
+
 #score-display {
     font-size: 20px;
     margin-top: 10px;
@@ -605,10 +619,21 @@ body {
     color: white;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 25px;
 }
 
 #start-game:hover {
     background-color: #388e3c;
+}
+
+#stop-game {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: red;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 /* Footer */
@@ -745,26 +770,22 @@ footer p {
 
     /* Mini Game */
     #mini-game {
-        width: 95vw;
-        height: auto;
+        width: 85vw;
         padding: 12px;
-    }
-
-    #mini-game-container {
-        flex-direction: column;
-        height: auto;
     }
 
     #game-con-left {
         width: 100%;
-        flex: none;
         align-items: center;
     }
 
     #game-con-right {
         width: 100%;
-        height: 350px;
-        margin-top: 10px;
+    }
+
+    .piece {
+        padding: 8px 12px;
+        font-size: 14px;
     }
 
     #start-game {
