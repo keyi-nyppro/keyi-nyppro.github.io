@@ -394,6 +394,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let timerInterval;
     const timerDisplay = document.getElementById("timer");
 
+    const chessMove = new Audio("audio/chessmove.mp3");
+    const chessStart = new Audio("audio/gamestart.mp3");
+
     const container = document.getElementById("game-con-right");
     const scoreDisplay = document.getElementById("score");
     const startBtn = document.getElementById("start-game");
@@ -438,6 +441,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // reset and start countdown
         startCountdown();
 
+        chessStart.play();
+
         // change button text to "Restart"
         startBtn.textContent = "Restart";
 
@@ -465,9 +470,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (randomPiece.name === "General") {
                     gameScore++;
                     scoreDisplay.textContent = `Score: ${gameScore}`;
+                    chessMove.play();
                 }
 
                 else {
+                    chessMove.play();
                     alert(`You have been eaten by ${randomPiece.name}!`);
 
                     clearInterval(intervalId);
@@ -509,7 +516,7 @@ document.addEventListener("DOMContentLoaded", function () {
             scoreDisplay.textContent = `Score: 0`;
 
             timerDisplay.textContent = "Time Left: 2:00";
-            
+
             startBtn.textContent = "Start Game";
         }, 120000);
     }

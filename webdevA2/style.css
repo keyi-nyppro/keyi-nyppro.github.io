@@ -630,48 +630,6 @@ body {
     background-color: #388e3c;
 }
 
-#pop-msg {
-    display:none;
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.8);
-    color: white;
-    padding: 20px 30px;
-    border-radius: 8px;
-    font-size: 18px;
-    z-index: 9999;
-    max-width: 300px;
-    text-align: center;
-    cursor: pointer;
-}
-
-/* .piece {
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 36px;
-    font-size: 20px;
-    font-weight: bold;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    border: 2px solid #000;
-    z-index: 5;
-} */
-
-.piece[data-color="R"] {
-    color: red;
-    border-color: red;
-}
-
-.piece[data-color="B"] {
-    color: black;
-    border-color: black;
-}
-
 /* Footer */
 footer {
     background-color: #4f0f0f;
@@ -806,7 +764,7 @@ footer p {
 
     /* Mini Game */
     .mini-game {
-        max-width: 100px;
+        width: 50px;
         height: auto;
     }
 
