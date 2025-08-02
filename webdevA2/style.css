@@ -765,7 +765,7 @@ footer p {
     /* Mini Game */
     #mini-game-container {
         width: 100%;
-        max-width: 300px;
+        max-width: 100px;
         margin: 0 auto;
         padding: 10px;
     }
