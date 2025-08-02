@@ -763,9 +763,26 @@ footer p {
     }
 
     /* Mini Game */
-    .mini-game {
-        width: 50px;
+    #mini-game-container {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    #game-con-right {
+        width: 100%;
         height: auto;
+    }
+
+    .piece {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+
+    #start-game {
+        width: 100%;
     }
 
     /* Footer */
