@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 elem.msRequestFullscreen();
             }
 
-            btnFS.textContent = "Exit Full Screen"
+            btnFS.textContent = "Exit Full Screen";
         }
 
         else {
@@ -56,8 +56,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // JS for DESKTOP NAV
     const nav = document.querySelector("#main-nav");
+    window.addEventListener("scroll", scrollNav);
 
-    window.addEventListener("scroll", () => {
+    function scrollNav() {
         const scrollY = window.scrollY;
         const maxRevealDistance = 150;
 
@@ -72,13 +73,14 @@ document.addEventListener("DOMContentLoaded", function () {
         nav.style.opacity = opacity;
 
         nav.style.pointerEvents = percent > 0.1 ? "auto" : "none";
-    });
+    }
 
     // JS for MOBILE NAV
     const mobileNav = document.querySelector("#mobile-nav");
     const chessSection = document.querySelector("#chess");
+    window.addEventListener("scroll", scrollMobileNav);
 
-    window.addEventListener("scroll", () => {
+    function scrollMobileNav() {
         if (!mobileNav || !chessSection) return;
 
         const scrollY = window.scrollY;
@@ -92,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         mobileNav.style.transform = `translateY(${translateY}px)`;
         mobileNav.style.opacity = opacity;
-    });
+    }
 
     // JS for Showing Subtopic Pages - Both Desktop & Mobile
     const page1btn = document.querySelector("#background_nav");
@@ -107,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentVisiblePage = null;
 
     function hideall() {
-        allpages.forEach(p => {
+        allpages.forEach(function(p) {
             p.style.display = "none";
             p.classList.remove("slide-right", "slide-left", "fade-scale", "active");
         });
@@ -140,37 +142,53 @@ document.addEventListener("DOMContentLoaded", function () {
             page.classList.add("fade-scale");
         }
 
-        requestAnimationFrame(() => {
+        requestAnimationFrame(function() {
             page.classList.add("active");
         });
 
         currentVisiblePage = page;
     }
 
-    page1btn.addEventListener("click", () => toggle(1));
-    page2btn.addEventListener("click", () => toggle(2));
-    page3btn.addEventListener("click", () => toggle(3));
+    page1btn.addEventListener("click", function() {
+        toggle(1);
+    });
 
-    mobileBtn1.addEventListener("click", () => toggle(1));
-    mobileBtn2.addEventListener("click", () => toggle(2));
-    mobileBtn3.addEventListener("click", () => toggle(3));
+    page2btn.addEventListener("click", function() {
+        toggle(2);
+    });
+
+    page3btn.addEventListener("click", function() {
+        toggle(3);
+    });
+
+    mobileBtn1.addEventListener("click", function() {
+        toggle(1);
+    });
+
+    mobileBtn2.addEventListener("click", function() {
+        toggle(2);
+    });
+
+    mobileBtn3.addEventListener("click", function() {
+        toggle(3);
+    });
 
     hideall();
 
     // JS for Page 1 - Timeline
     const timelineItems = document.querySelectorAll(".timeline-item");
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
             entry.target.classList.toggle("show", entry.isIntersecting);
         });
     }, {
         threshold: 0.1
     });
 
-    timelineItems.forEach(item => {
+    timelineItems.forEach(function(item) {
         observer.observe(item);
-    })
+    });
 
     // JS for Page 2 - Chess Pieces
     const modal = document.getElementById("chessModal");
@@ -209,8 +227,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    document.querySelectorAll("area[data-piece]").forEach(area => {
-        area.addEventListener("click", e => {
+    document.querySelectorAll("area[data-piece]").forEach(function(area) {
+        area.addEventListener("click", function(e) {
             e.preventDefault();
 
             const key = area.dataset.piece;
@@ -224,13 +242,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    closeBtn.addEventListener("click", () => {
+    closeBtn.addEventListener("click", function() {
         modal.style.display = "none";
         modalTitle.textContent = "";
         modalDesc.textContent = "";
     });
 
-    window.addEventListener("click", e => {
+    window.addEventListener("click", function(e) {
         if (e.target === modal) {
             modal.style.display = "none";
         }
@@ -271,7 +289,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let q = questions[currentQn];
         questionElement.innerText = q.question;
 
-        q.answers.forEach(answer => {
+        q.answers.forEach(function(answer) {
             const btn = document.createElement("button");
             btn.classList.add("btn");
             btn.innerText = answer;
@@ -298,7 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
             selectedBtn.style.backgroundColor = "#f44336";
         }
 
-        Array.from(answerButtons.children).forEach(btn => {
+        Array.from(answerButtons.children).forEach(function(btn) {
             btn.disabled = true;
 
             if (btn.dataset.correct === "true") {
@@ -334,7 +352,7 @@ document.addEventListener("DOMContentLoaded", function () {
         showQuestion();
     }
 
-    nextButton.addEventListener("click", () => {
+    nextButton.addEventListener("click", function() {
         if (currentQn < questions.length) {
             handleNext();
         }
@@ -363,11 +381,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 page3.style.display = "none";
                 page3.classList.remove("slide-left");
 
-                requestAnimationFrame(() => {
+                requestAnimationFrame(function() {
                     page2.classList.add("active");
                 });
 
-                setTimeout(() => {
+                setTimeout(function() {
                     const anchor = document.getElementById("pieces-con");
 
                     if (anchor) {
@@ -399,7 +417,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const chessMove = new Audio("audio/chessmove.mp3");
     const chessStart = new Audio("audio/gamestart.mp3");
 
-    const miniGame = document.getElementById("mini-game");
     const container = document.getElementById("game-con-right");
     const scoreDisplay = document.getElementById("score");
     const startBtn = document.getElementById("start-game");
@@ -409,7 +426,7 @@ document.addEventListener("DOMContentLoaded", function () {
         clearInterval(timerInterval);
         timerDisplay.textContent = "Time Left: 2:00";
 
-        timerInterval = setInterval(() => {
+        timerInterval = setInterval(function() {
             if (!isPaused) {
                 const minutes = Math.floor(totalSeconds / 60);
                 const seconds = totalSeconds % 60;
@@ -442,7 +459,7 @@ document.addEventListener("DOMContentLoaded", function () {
         startCountdown();
         chessStart.play();
 
-        intervalId = setInterval(() => {
+        intervalId = setInterval(function() {
             if (isPaused) return; // Don't spawn while paused
 
             const piece = document.createElement("div");
@@ -462,7 +479,7 @@ document.addEventListener("DOMContentLoaded", function () {
             piece.style.left = `${Math.random() * maxX}px`;
             piece.style.top = `${Math.random() * maxY}px`;
 
-            piece.addEventListener("click", () => {
+            piece.addEventListener("click", function() {
                 if (isPaused) return;
 
                 if (randomPiece.name === "General") {
@@ -480,7 +497,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     clearInterval(timerInterval);
                     container.innerHTML = "";
                     gameScore = 0;
-                    scoreDisplay.textContent = `Score: 0`;
+                    scoreDisplay.textContent = "Score: 0";
                     timerDisplay.textContent = "Time Left: 2:00";
                     startBtn.textContent = "Start Game";
                 }
@@ -491,22 +508,15 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             container.appendChild(piece);
-
-            // Only remove after 3 seconds if not paused
-            const removalTimeout = setTimeout(() => {
-                if (!isPaused && container.contains(piece)) {
-                    container.removeChild(piece);
-                }
-            }, 3000);
         }, 800);
 
-        gameTimer = setTimeout(() => {
+        gameTimer = setTimeout(function() {
             clearInterval(intervalId);
             clearInterval(timerInterval);
             alert("Game Over! Your score: " + gameScore);
 
             gameScore = 0;
-            scoreDisplay.textContent = `Score: 0`;
+            scoreDisplay.textContent = "Score: 0";
             timerDisplay.textContent = "Time Left: 2:00";
             startBtn.textContent = "Start Game";
             container.innerHTML = "";
@@ -520,4 +530,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     startBtn.addEventListener("click", startGame);
     stopBtn.addEventListener("click", togglePause);
-})
+});

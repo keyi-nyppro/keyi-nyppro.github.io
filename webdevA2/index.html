@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
     <link href="style.css" type="text/css" rel="stylesheet">
     <script src="main.js" defer></script>
+    <link rel="manifest" href="manifest.json">
 
     <title>Chinese Chess</title>
 </head>
@@ -16,7 +20,7 @@
         <img src="images/nav_img.jpg" alt="Chess" title="Chess" id="chess-img">
 
         <div id="textOnImg">
-            <div id="title">Chinese Chess <br> Xiang Qi 象棋</div>
+            <h4 id="title">Chinese Chess <br> Xiang Qi 象棋</h4>
 
             <div>
                 <button id="btnFS">Enter Full Screen</button>
@@ -59,7 +63,7 @@
 
         <!-- Background of XiangQi -->
         <section class="page" id="page1">
-            <section id="background_origin">
+            <div id="background_origin">
                 <h4>📜 Origin</h4>
 
                 <p><b>Xiangqi</b>, is also known as <b>Chinese Chess</b>, is a strategy board game that traces its roots back over <b>1,000 years</b>, making it one of the <b>oldest forms of chess in the world</b>.</p>
@@ -69,7 +73,7 @@
                     <li>It is believed to have evolved from <b>Chaturanga</b>, an ancient Indian board game that also gave rise to Western Chess and Shogi (Japanese Chess).</li>
                     <li>Xiangqi developed <b>independently in China</b>, incorporating local military culture, philosophy, and symbolism.</li>
                 </ul>
-            </section>
+            </div>
 
             <br>
 
@@ -148,7 +152,7 @@
 
         <!-- Chess Pieces of Xiangqi -->
         <section class="page" id="page2">
-            <section id="pieces-con">
+            <div id="pieces-con">
                 <div id="pieces-text-con">
                     <h3>Description of Pieces of Xiangqi</h3>
                     <p>Let's click on the chess!</p>
@@ -157,38 +161,38 @@
                 <img src="images/chess_board.png" alt="Chess Board" title="Chess Board" id="chess-board" usemap="#image-map">
                 
                 <map name="image-map">
-                    <area target="" alt="Chariot" title="Chariot" href="" coords="21,22,15" shape="circle" data-piece="Chariot">
-                    <area target="" alt="Horse" title="Horse" href="" coords="58,21,14" shape="circle" data-piece="Horse">
-                    <area target="" alt="Elephant" title="Elephant" href="" coords="97,22,13" shape="circle" data-piece="Elephant">
-                    <area target="" alt="Advisor" title="Advisor" href="" coords="134,21,14" shape="circle" data-piece="Advisor">
-                    <area target="" alt="General" title="General" href="" coords="172,21,14" shape="circle" data-piece="General">
-                    <area target="" alt="Advisor" title="Advisor" href="" coords="211,21,13" shape="circle" data-piece="Advisor">
-                    <area target="" alt="Elephant" title="Elephant" href="" coords="248,21,14" shape="circle" data-piece="Elephant">
-                    <area target="" alt="Horse" title="Horse" href="" coords="287,20,14" shape="circle" data-piece="Horse">
-                    <area target="" alt="Chariot" title="Chariot" href="" coords="324,20,14" shape="circle" data-piece="Chariot">
-                    <area target="" alt="Cannon" title="Cannon" href="" coords="58,100,14" shape="circle" data-piece="Cannon">
-                    <area target="" alt="Cannon" title="Cannon" href="" coords="288,98,14" shape="circle" data-piece="Cannon">
-                    <area target="" alt="Soldier" title="Soldier" href="" coords="23,139,14" shape="circle" data-piece="Soldier">
-                    <area target="" alt="Soldier" title="Soldier" href="" coords="97,139,14" shape="circle" data-piece="Soldier">
-                    <area target="" alt="Soldier" title="Soldier" href="" coords="174,137,13" shape="circle" data-piece="Soldier">
-                    <area target="" alt="Soldier" title="Soldier" href="" coords="250,136,13" shape="circle" data-piece="Soldier">
-                    <area target="" alt="Soldier" title="Soldier" href="" coords="322,136,14" shape="circle" data-piece="Soldier">
-                    <area target="" alt="Soldier" title="Soldier" href="" coords="21,254,13" shape="circle" data-piece="Soldier">
-                    <area target="" alt="Soldier" title="Soldier" href="" coords="97,255,13" shape="circle" data-piece="Soldier">
-                    <area target="" alt="Soldier" title="Soldier" href="" coords="172,254,14" shape="circle" data-piece="Soldier">
-                    <area target="" alt="Soldier" title="Soldier" href="" coords="248,254,14" shape="circle" data-piece="Soldier">
-                    <area target="" alt="Soldier" title="Soldier" href="" coords="325,254,14" shape="circle" data-piece="Soldier">
-                    <area target="" alt="Cannon" title="Cannon" href="" coords="59,293,14" shape="circle" data-piece="Cannon">
-                    <area target="" alt="Cannon" title="Cannon" href="" coords="286,292,13" shape="circle" data-piece="Cannon">
-                    <area target="" alt="Chariot" title="Chariot" href="" coords="20,369,14" shape="circle" data-piece="Chariot">
-                    <area target="" alt="Horse" title="Horse" href="" coords="57,370,14" shape="circle" data-piece="Horse">
-                    <area target="" alt="Elephant" title="Elephant" href="" coords="95,369,14" shape="circle" data-piece="Elephant">
-                    <area target="" alt="Advisor" title="Advisor" href="" coords="134,369,13" shape="circle" data-piece="Advisor">
-                    <area target="" alt="General" title="General" href="" coords="173,370,13" shape="circle" data-piece="General">
-                    <area target="" alt="Advisor" title="Advisor" href="" coords="210,370,13" shape="circle" data-piece="Advisor">
-                    <area target="" alt="Elephant" title="Elephant" href="" coords="250,369,13" shape="circle" data-piece="Elephant">
-                    <area target="" alt="Horse" title="Horse" href="" coords="288,369,13" shape="circle" data-piece="Horse">
-                    <area target="" alt="Chariot" title="Chariot" href="" coords="325,369,14" shape="circle" data-piece="Chariot">
+                    <area target="_self" alt="Chariot" title="Chariot" href="" coords="21,22,15" shape="circle" data-piece="Chariot">
+                    <area target="_self" alt="Horse" title="Horse" href="" coords="58,21,14" shape="circle" data-piece="Horse">
+                    <area target="_self" alt="Elephant" title="Elephant" href="" coords="97,22,13" shape="circle" data-piece="Elephant">
+                    <area target="_self" alt="Advisor" title="Advisor" href="" coords="134,21,14" shape="circle" data-piece="Advisor">
+                    <area target="_self" alt="General" title="General" href="" coords="172,21,14" shape="circle" data-piece="General">
+                    <area target="_self" alt="Advisor" title="Advisor" href="" coords="211,21,13" shape="circle" data-piece="Advisor">
+                    <area target="_self" alt="Elephant" title="Elephant" href="" coords="248,21,14" shape="circle" data-piece="Elephant">
+                    <area target="_self" alt="Horse" title="Horse" href="" coords="287,20,14" shape="circle" data-piece="Horse">
+                    <area target="_self" alt="Chariot" title="Chariot" href="" coords="324,20,14" shape="circle" data-piece="Chariot">
+                    <area target="_self" alt="Cannon" title="Cannon" href="" coords="58,100,14" shape="circle" data-piece="Cannon">
+                    <area target="_self" alt="Cannon" title="Cannon" href="" coords="288,98,14" shape="circle" data-piece="Cannon">
+                    <area target="_self" alt="Soldier" title="Soldier" href="" coords="23,139,14" shape="circle" data-piece="Soldier">
+                    <area target="_self" alt="Soldier" title="Soldier" href="" coords="97,139,14" shape="circle" data-piece="Soldier">
+                    <area target="_self" alt="Soldier" title="Soldier" href="" coords="174,137,13" shape="circle" data-piece="Soldier">
+                    <area target="_self" alt="Soldier" title="Soldier" href="" coords="250,136,13" shape="circle" data-piece="Soldier">
+                    <area target="_self" alt="Soldier" title="Soldier" href="" coords="322,136,14" shape="circle" data-piece="Soldier">
+                    <area target="_self" alt="Soldier" title="Soldier" href="" coords="21,254,13" shape="circle" data-piece="Soldier">
+                    <area target="_self" alt="Soldier" title="Soldier" href="" coords="97,255,13" shape="circle" data-piece="Soldier">
+                    <area target="_self" alt="Soldier" title="Soldier" href="" coords="172,254,14" shape="circle" data-piece="Soldier">
+                    <area target="_self" alt="Soldier" title="Soldier" href="" coords="248,254,14" shape="circle" data-piece="Soldier">
+                    <area target="_self" alt="Soldier" title="Soldier" href="" coords="325,254,14" shape="circle" data-piece="Soldier">
+                    <area target="_self" alt="Cannon" title="Cannon" href="" coords="59,293,14" shape="circle" data-piece="Cannon">
+                    <area target="_self" alt="Cannon" title="Cannon" href="" coords="286,292,13" shape="circle" data-piece="Cannon">
+                    <area target="_self" alt="Chariot" title="Chariot" href="" coords="20,369,14" shape="circle" data-piece="Chariot">
+                    <area target="_self" alt="Horse" title="Horse" href="" coords="57,370,14" shape="circle" data-piece="Horse">
+                    <area target="_self" alt="Elephant" title="Elephant" href="" coords="95,369,14" shape="circle" data-piece="Elephant">
+                    <area target="_self" alt="Advisor" title="Advisor" href="" coords="134,369,13" shape="circle" data-piece="Advisor">
+                    <area target="_self" alt="General" title="General" href="" coords="173,370,13" shape="circle" data-piece="General">
+                    <area target="_self" alt="Advisor" title="Advisor" href="" coords="210,370,13" shape="circle" data-piece="Advisor">
+                    <area target="_self" alt="Elephant" title="Elephant" href="" coords="250,369,13" shape="circle" data-piece="Elephant">
+                    <area target="_self" alt="Horse" title="Horse" href="" coords="288,369,13" shape="circle" data-piece="Horse">
+                    <area target="_self" alt="Chariot" title="Chariot" href="" coords="325,369,14" shape="circle" data-piece="Chariot">
                 </map>
                 
                 <div id="chessModal" class="modal">
@@ -199,7 +203,7 @@
                         <div id="modal-description">Chess Description</div>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- MCQ -->
             <section id="mcq">
@@ -227,7 +231,7 @@
             <div class="play-type-wrap">
 
                 <!-- Standard 1v1 -->
-                <section class="playtype-con" id="standard-con">
+                <div class="playtype-con" id="standard-con">
                     <h4>🧱 Standard 1v1</h4>
                     <img src="images/chess_board.png" alt="standard play type" title="standard play type" id="standard-img">
 
@@ -302,7 +306,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
                 
                 <!-- Banqi -->
                 <section class="playtype-con" id="banqi-con">
@@ -328,7 +332,7 @@
                         <div class="flip-card">
                             <div id="setup-banqi" class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <h5><h5>🧩 Setup</h5></h5>
+                                    <h5>🧩 Setup</h5>
                                 </div>
 
                                 <div class="flip-card-back pad">
@@ -378,7 +382,7 @@
 
                                 <div class="flip-card-back pad">
                                     <p class="page3-text"><br><br>
-                                        😲 Hidden information introduces surprise and excitement <br><br></span>
+                                        😲 Hidden information introduces surprise and excitement <br><br>
                                         ⌛ Fast-paced and casual-popular in parks and among children <br><br>
                                         😣 Simple to start, but still rewards tactical thinking and memory <br><br>
                                         🔮 More luck-driven compared to standard Xiang Qi
@@ -416,7 +420,7 @@
 
     <footer>
         <h6>Scan Me!</h6>        
-        <img src="images/background.jpg" alt="QR Code" title="QR Code" id="qrCode">
+        <img src="images/qr_code.png" alt="QR Code" title="QR Code" id="qrCode">
 
         <p>&copy; 2025 Chinese Chess Learning Website by 01_LingKeYi_254485U. All rights reserved.</p>
     </footer>
