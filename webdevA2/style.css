@@ -762,7 +762,7 @@ footer p {
         color: white;
         text-align: center;
         font-family: 'Cinzel';
-        gap: 15px;
+        gap: 45px;
     }
 
     /* Page 1 */
@@ -826,6 +826,10 @@ footer p {
 
     .flip-card-back {
         padding: 20px 16px;
+    }
+
+    .pad {
+        padding-top: 20px;
     }
 
     /* MCQ */
