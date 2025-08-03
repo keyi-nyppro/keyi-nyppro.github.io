@@ -757,6 +757,7 @@ footer p {
         color: white;
         text-align: center;
         font-family: 'Cinzel';
+        gap: 5px;
     }
 
     /* Page 1 */
@@ -819,7 +820,7 @@ footer p {
     }
 
     .flip-card-back {
-        padding: 25px 16px;
+        padding: 5px 16px;
     }
 
     /* MCQ */
