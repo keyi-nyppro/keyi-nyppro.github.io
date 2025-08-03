@@ -812,7 +812,7 @@ footer p {
 
     .playtype-con {
         flex: 1 1 100%;
-        padding: 5px 15px 15px 15px;
+        padding: 15px;
         overflow-y: auto;
         min-height: auto;
     }
@@ -822,7 +822,7 @@ footer p {
     }
 
     .flip-card-back {
-        padding: 5px 20px;
+        padding: 15px 20px;
     }
 
     /* MCQ */
