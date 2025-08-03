@@ -504,7 +504,7 @@ body {
     overflow-y: auto;
     box-sizing: border-box;
     max-height: none;
-    padding: 20px;
+    padding: 18px;
 }
 
 .pad {
@@ -816,17 +816,12 @@ footer p {
         overflow-y: auto;
     }
 
-    .flip-card-con {
-        gap: 7px;
-    }
-
     .flip-card {
         min-height: 420px;
-        padding-bottom: 30px;
     }
 
     .flip-card-back {
-        padding: 20px 20px;
+        padding: 19px 20px;
     }
 
     /* MCQ */
