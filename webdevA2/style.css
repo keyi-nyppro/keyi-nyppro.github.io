@@ -472,7 +472,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    padding: 16px;
+    padding: 24px 20px 20px 20px;
     box-sizing: border-box;
     border-radius: 10px;
     backface-visibility: hidden;
@@ -480,7 +480,6 @@ body {
     font-family: 'Crimson';
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -488,6 +487,7 @@ body {
     overflow-wrap: break-word;
     white-space: normal;
     overflow-y: auto;
+    scroll-padding-top: 1rem;
 }
 
 .flip-card-front {
@@ -500,14 +500,13 @@ body {
     transform: rotateX(180deg);
     font-size: 14px;
     color: #653401;
-    padding: 20px;
     overflow-y: auto;
     box-sizing: border-box;
     max-height: 100%;
 }
 
 .pad {
-    padding-top: 50px;
+    padding-top: 100px;
 }
 
 .playtype-con p {
@@ -824,7 +823,7 @@ footer p {
     }
 
     .flip-card-back {
-        padding: 20px 16px;
+        padding: 20px;
     }
 
     .pad {
