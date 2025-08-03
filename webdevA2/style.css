@@ -829,6 +829,10 @@ footer p {
         padding: 20px 10px;
     }
 
+    .pad {
+        padding-top: 120px;
+    }
+
     /* MCQ */
     #mcq {
         width: 75vw;
