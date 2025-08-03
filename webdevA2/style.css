@@ -757,10 +757,14 @@ footer p {
         color: white;
         text-align: center;
         font-family: 'Cinzel';
-        gap: 5px;
+        gap: 15px;
     }
 
     /* Page 1 */
+    #page1 {
+        width: 95vw;
+    }
+
     #background_timeline {
         padding: 20px;
     }
@@ -816,16 +820,16 @@ footer p {
     }
 
     .flip-card {
-        min-height: 240px;
+        min-height: 280px;
     }
 
     .flip-card-back {
-        padding: 5px 16px;
+        padding: 20px 16px;
     }
 
     /* MCQ */
     #mcq {
-        width: 85vw;
+        width: 75vw;
     }
 
     /* Mini Game */
