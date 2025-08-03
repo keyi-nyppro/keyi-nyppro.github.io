@@ -821,6 +821,7 @@ footer p {
     }
 
     .flip-card {
+        min-height: 320px;
         padding-bottom: 30px;
     }
 
