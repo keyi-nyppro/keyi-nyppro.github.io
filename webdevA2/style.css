@@ -408,7 +408,7 @@ body {
 }
 
 .playtype-con {
-    flex: 1 1 500px;
+    flex: 1 1 100%;
     max-width: 600px;
     box-sizing: border-box;
     margin-bottom: 20px;
@@ -416,6 +416,7 @@ body {
     border: 5px solid #ddb892;
     background-color: #f4e9dc;
     padding: 20px;
+    overflow-y: visible;
 }
 
 .playtype-con img {
@@ -502,7 +503,8 @@ body {
     color: #653401;
     overflow-y: auto;
     box-sizing: border-box;
-    max-height: 100%;
+    max-height: none;
+    padding: 20px;
 }
 
 .pad {
@@ -819,11 +821,11 @@ footer p {
     }
 
     .flip-card {
-        min-height: 280px;
+        padding-bottom: 30px;
     }
 
     .flip-card-back {
-        padding: 20px;
+        padding: 20px 10px;
     }
 
     .pad {
