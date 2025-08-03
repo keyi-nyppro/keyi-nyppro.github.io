@@ -830,6 +830,10 @@ footer p {
         padding-top: 70px;
     }
 
+    #rules-banqi {
+        padding-top: 90px;
+    }
+
     /* MCQ */
     #mcq {
         width: 75vw;
