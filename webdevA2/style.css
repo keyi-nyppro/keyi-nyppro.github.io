@@ -524,7 +524,7 @@ body {
 #mini-game {
     border: 2px solid #fff8f0;
     padding: 16px;
-    margin: 40px auto;
+    margin: 30px auto;
     width: 500px;
     height: 500px;
     background-color: #fff8f0;
@@ -797,8 +797,23 @@ footer p {
     }
 
     /* Page 3 */
+    .play-type-wrap {
+        align-items: center;
+        padding: 0 10px;
+    }
+
     .playtype-con {
         flex: 1 1 100%;
+        padding: 15px;
+        overflow-y: auto;
+    }
+
+    .flip-card-con {
+        gap: 12px;
+    }
+
+    .flip-card {
+        height: 160px;
     }
 
     /* MCQ */
