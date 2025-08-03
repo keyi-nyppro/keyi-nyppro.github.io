@@ -762,7 +762,6 @@ footer p {
         color: white;
         text-align: center;
         font-family: 'Cinzel';
-        gap: 45px;
     }
 
     /* Page 1 */
@@ -829,7 +828,7 @@ footer p {
     }
 
     .pad {
-        padding-top: 20px;
+        padding-top: 70px;
     }
 
     /* MCQ */
