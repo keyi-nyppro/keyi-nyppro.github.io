@@ -518,16 +518,6 @@ document.addEventListener("DOMContentLoaded", function () {
         stopBtn.textContent = isPaused ? "Continue" : "Stop";
     }
 
-    // Auto-stop the game when clicking outside the miniGame
-    document.addEventListener("click", autoPause);
-
-    function autoPause() {
-        if (!miniGame.contains(event.target) && !isPaused) {
-            isPaused = true;
-            stopBtn.textContent = "Continue";
-        }
-    }
-
     startBtn.addEventListener("click", startGame);
     stopBtn.addEventListener("click", togglePause);
 })
