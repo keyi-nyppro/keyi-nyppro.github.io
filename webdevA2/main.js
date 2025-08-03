@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     // JS for Full Screen
     const btnFS = document.querySelector("#btnFS");
-
     btnFS.addEventListener("click", FullScreen);
 
     function FullScreen() {
@@ -66,12 +65,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const percent = clampedScroll / maxRevealDistance;
 
+        // 0 when hidden (-100%), 1 when fully visible (0%)
         const translateY = -100 + percent * 100;
         const opacity = percent;
 
+        // Applies the vertical slide and fade in effects
         nav.style.transform = `translateY(${translateY}%)`;
         nav.style.opacity = opacity;
 
+        // Clickable once it becomes at least 10%
         nav.style.pointerEvents = percent > 0.1 ? "auto" : "none";
     }
 
@@ -89,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const clampedScroll = Math.min(scrollY, maxRevealDistance);
         const percent = clampedScroll / maxRevealDistance;
 
-        const translateY = 50 * (1 - percent); // From 50px to 0px
+        const translateY = 50 * (1 - percent);
         const opacity = percent;
 
         mobileNav.style.transform = `translateY(${translateY}px)`;
@@ -108,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentVisiblePage = null;
 
+    // Hide all the pages, remove all the animation
     function hideall() {
         allpages.forEach(function(p) {
             p.style.display = "none";
@@ -117,9 +120,11 @@ document.addEventListener("DOMContentLoaded", function () {
         currentVisiblePage = null;
     }
 
+    // Find the page
     function toggle(pgno) {
         const page = document.querySelector("#page" + pgno);
 
+        // If the page is alr open, then hide it and remove the animation
         if (currentVisiblePage === page) {
             page.style.display = "none";
             page.classList.remove("slide-right", "slide-left", "fade-scale", "active");
@@ -128,6 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         hideall();
+
+        // Add the correct animation for the page when user click on the navbar
         page.style.display = "block";
 
         if (pgno === 1) {
@@ -149,6 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
         currentVisiblePage = page;
     }
 
+    // To show correct page
     page1btn.addEventListener("click", function() {
         toggle(1);
     });
@@ -178,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // JS for Page 1 - Timeline
     const timelineItems = document.querySelectorAll(".timeline-item");
 
+    // To detect each item scrolls into view
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             entry.target.classList.toggle("show", entry.isIntersecting);
@@ -227,6 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    // Show the modal (title & decription) when user click on that 'area'
     document.querySelectorAll("area[data-piece]").forEach(function(area) {
         area.addEventListener("click", function(e) {
             e.preventDefault();
@@ -242,12 +252,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Click to close the modal
     closeBtn.addEventListener("click", function() {
         modal.style.display = "none";
         modalTitle.textContent = "";
         modalDesc.textContent = "";
     });
 
+    // Click outside the box to close the modal
     window.addEventListener("click", function(e) {
         if (e.target === modal) {
             modal.style.display = "none";
@@ -282,6 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const answerButtons = document.getElementById("ans-btn");
     const nextButton = document.getElementById("next-btn");
 
+    // Clear previous ans, load current question and buttons for each ans
     function showQuestion() {
         answerButtons.innerHTML = "";
         nextButton.style.display = "none";
@@ -303,6 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Check if the clicked button is the correct ans
     function selectAnswer(e) {
         const selectedBtn = e.target;
         const isCorrect = selectedBtn.dataset.correct === "true";
@@ -316,6 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
             selectedBtn.style.backgroundColor = "#f44336";
         }
 
+        // Show the correct ans
         Array.from(answerButtons.children).forEach(function(btn) {
             btn.disabled = true;
 
@@ -327,6 +342,7 @@ document.addEventListener("DOMContentLoaded", function () {
         nextButton.style.display = "inline-block";
     }
 
+    // Move to the next question, shows final score in the last question
     function handleNext() {
         currentQn++;
 
@@ -339,12 +355,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Display final score, change 'next' btn to 'restart' btn
     function showScore() {
         questionElement.innerText = `You scored ${score} out of ${questions.length}!`;
         nextButton.innerText = "Restart";
         nextButton.style.display = "inline-block";
     }
 
+    // Restart the quiz
     function restartQuiz() {
         currentQn = 0;
         score = 0;
@@ -352,6 +370,7 @@ document.addEventListener("DOMContentLoaded", function () {
         showQuestion();
     }
 
+    // 'next' for the next question, 'restart' to restart the quiz
     nextButton.addEventListener("click", function() {
         if (currentQn < questions.length) {
             handleNext();
@@ -367,6 +386,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // JS for Page 3
     const linkToPieces = document.getElementById("linkToPieces");
 
+    // Click the link in Page3 to Page2
     if (linkToPieces) {
         linkToPieces.addEventListener("click", function (e) {
             e.preventDefault();
@@ -374,6 +394,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const page2 = document.getElementById("page2");
             const page3 = document.getElementById("page3");
 
+            // Make Page2 visible and add the animation for Page2, hide Page3 and remove animation for Page3
             if (page2) {
                 page2.style.display = "block";
                 page2.classList.add("slide-left");
@@ -385,6 +406,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     page2.classList.add("active");
                 });
 
+                // Make the animation smoothly
                 setTimeout(function() {
                     const anchor = document.getElementById("pieces-con");
 
@@ -397,22 +419,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // JS for Mini Game
-    const pieces = [
-        { name: "General", symbol: "G" },
-        { name: "Advisor", symbol: "A" },
-        { name: "Elephant", symbol: "E" },
-        { name: "Horse", symbol: "H" },
-        { name: "Cannon", symbol: "C" },
-    ];
-
     let gameScore = 0;
     let intervalId;
     let gameTimer;
     let totalSeconds = 120;
     let isPaused = false;
-
+    let isGameRunning = false;
     let timerInterval;
-    const timerDisplay = document.getElementById("timer");
 
     const chessMove = new Audio("audio/chessmove.mp3");
     const chessStart = new Audio("audio/gamestart.mp3");
@@ -421,20 +434,34 @@ document.addEventListener("DOMContentLoaded", function () {
     const scoreDisplay = document.getElementById("score");
     const startBtn = document.getElementById("start-game");
     const stopBtn = document.getElementById("stop-game");
+    const timerDisplay = document.getElementById("timer");
 
+    const pieces = [
+        { name: "General", symbol: "G" },
+        { name: "Advisor", symbol: "A" },
+        { name: "Elephant", symbol: "E" },
+        { name: "Horse", symbol: "H" },
+        { name: "Cannon", symbol: "C" },
+    ];
+
+    // Timer countdown for the mini-game
     function startCountdown() {
         clearInterval(timerInterval);
         timerDisplay.textContent = "Time Left: 2:00";
 
         timerInterval = setInterval(function() {
-            if (!isPaused) {
+            if (!isPaused && isGameRunning) {
                 const minutes = Math.floor(totalSeconds / 60);
                 const seconds = totalSeconds % 60;
 
+                // Update the timer display every second
                 timerDisplay.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
                 if (totalSeconds <= 0) {
+                    isGameRunning = false;
                     clearInterval(timerInterval);
+                    clearInterval(timerInterval);
+                    alert("Game Over! Your score: " + gameScore);
                 }
 
                 totalSeconds--;
@@ -455,16 +482,18 @@ document.addEventListener("DOMContentLoaded", function () {
         stopBtn.textContent = "Stop";
         totalSeconds = 120;
         isPaused = false;
+        isGameRunning = true;
 
         startCountdown();
         chessStart.play();
 
         intervalId = setInterval(function() {
-            if (isPaused) return; // Don't spawn while paused
+            if (!isGameRunning || isPaused) return; // Don't spawn while paused
 
             const piece = document.createElement("div");
             piece.classList.add("piece");
 
+            // Random spawn in the container
             const randomPiece = pieces[Math.floor(Math.random() * pieces.length)];
             piece.textContent = randomPiece.symbol;
 
@@ -482,12 +511,14 @@ document.addEventListener("DOMContentLoaded", function () {
             piece.addEventListener("click", function() {
                 if (isPaused) return;
 
+                // Get score when click on the 'general'
                 if (randomPiece.name === "General") {
                     gameScore++;
                     scoreDisplay.textContent = `Score: ${gameScore}`;
                     chessMove.play();
                 }
                 
+                // End game if click on the pieces that is not 'general', reset the game
                 else {
                     chessMove.play();
                     alert(`You have been eaten by ${randomPiece.name}!`);
@@ -495,6 +526,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     clearInterval(intervalId);
                     clearTimeout(gameTimer);
                     clearInterval(timerInterval);
+
+                    isGameRunning = false;
                     container.innerHTML = "";
                     gameScore = 0;
                     scoreDisplay.textContent = "Score: 0";
@@ -508,19 +541,14 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             container.appendChild(piece);
+
+            // Pieces disappear after 3 sec
+            setTimeout(function() {
+                if (container.contains(piece)) {
+                    container.removeChild(piece);
+                }
+            }, 3000);
         }, 800);
-
-        gameTimer = setTimeout(function() {
-            clearInterval(intervalId);
-            clearInterval(timerInterval);
-            alert("Game Over! Your score: " + gameScore);
-
-            gameScore = 0;
-            scoreDisplay.textContent = "Score: 0";
-            timerDisplay.textContent = "Time Left: 2:00";
-            startBtn.textContent = "Start Game";
-            container.innerHTML = "";
-        }, 120000);
     }
 
     function togglePause() {
