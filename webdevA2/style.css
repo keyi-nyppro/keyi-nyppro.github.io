@@ -817,7 +817,7 @@ footer p {
     }
 
     .flip-card-con {
-        gap: 12px;
+        gap: 7px;
     }
 
     .flip-card {
@@ -827,10 +827,6 @@ footer p {
 
     .flip-card-back {
         padding: 20px 20px;
-    }
-
-    .pad {
-        padding-top: 320px;
     }
 
     /* MCQ */
