@@ -806,14 +806,15 @@ footer p {
 
     /* Page 3 */
     .play-type-wrap {
-        align-items: center;
-        padding: 0 10px;
+        align-items: flex-start;
+        padding-top: 10px;
     }
 
     .playtype-con {
         flex: 1 1 100%;
         padding: 5px 15px 15px 15px;
         overflow-y: auto;
+        min-height: auto;
     }
 
     .flip-card {
