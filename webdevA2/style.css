@@ -812,16 +812,16 @@ footer p {
 
     .playtype-con {
         flex: 1 1 100%;
-        padding: 15px;
+        padding: 5px 15px 15px 15px;
         overflow-y: auto;
     }
 
     .flip-card {
-        min-height: 420px;
+        min-height: 320px;
     }
 
     .flip-card-back {
-        padding: 19px 20px;
+        padding: 5px 20px;
     }
 
     /* MCQ */
