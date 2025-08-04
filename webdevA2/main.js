@@ -490,23 +490,23 @@ document.addEventListener("DOMContentLoaded", function () {
         intervalId = setInterval(function() {
             if (!isGameRunning || isPaused) return; // Don't spawn while paused
 
-            const piece = document.createElement("div");
+           const piece = document.createElement("div");
             piece.classList.add("piece");
 
-            // Random spawn in the container
             const randomPiece = pieces[Math.floor(Math.random() * pieces.length)];
             piece.textContent = randomPiece.symbol;
+            if (randomPiece.className) piece.classList.add(randomPiece.className);
 
             const pieceSize = 48;
-            const boardWidth = 320;
-            const boardHeight = 429;
+            const maxX = container.clientWidth - pieceSize;
+            const maxY = container.clientHeight - pieceSize;
 
-            const maxX = boardWidth - pieceSize;
-            const maxY = boardHeight - pieceSize;
+            // Random fixed position inside container
+            const startX = Math.random() * maxX;
+            const startY = Math.random() * maxY;
 
-            piece.style.position = "absolute";
-            piece.style.left = `${Math.random() * maxX}px`;
-            piece.style.top = `${Math.random() * maxY}px`;
+            piece.style.left = startX + "px";
+            piece.style.top = startY + "px";
 
             piece.addEventListener("click", function() {
                 if (isPaused) return;
@@ -521,7 +521,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // End game if click on the pieces that is not 'general', reset the game
                 else {
                     chessMove.play();
-                    alert(`You have been eaten by ${randomPiece.name}!`);
+                    alert(`You have been eaten by ${randomPiece.name}! Score: ${gameScore}`);
 
                     clearInterval(intervalId);
                     clearTimeout(gameTimer);
@@ -552,10 +552,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function togglePause() {
-        isPaused = !isPaused;
-        stopBtn.textContent = isPaused ? "Continue" : "Stop";
+        if (!isGameRunning) return;
+
+        if (isPaused) {
+            isPaused = false;
+            stopBtn.textContent = "Stop";
+        }
+        
+        else {
+            isPaused = true;
+            stopBtn.textContent = "Continue";
+        }
     }
+
+    // Pause the game automatically when user click outside the minigame
+    // function autoPause(target) {
+    //     if (isGameRunning && !container.contains(target) && target !== startBtn && target !== stopBtn && !target.classList.contains()) {
+    //         clearInterval(intervalId);
+    //         clearInterval(timerInterval);
+    //         isPaused = true;
+
+    //         stopBtn.textContent = "Continue";
+    //     };
+    // };
 
     startBtn.addEventListener("click", startGame);
     stopBtn.addEventListener("click", togglePause);
+    document.addEventListener("click", function (e){
+        autoPause(e.target);
+    });
 });
