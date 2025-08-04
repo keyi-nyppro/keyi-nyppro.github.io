@@ -656,7 +656,7 @@ footer {
 
 footer img {
     height: auto;
-    width: 120px;
+    width: 220px;
     vertical-align: middle;
     margin-bottom: 10px;
 }
@@ -672,49 +672,56 @@ footer p {
     margin-top: 30px;
 }
 
-/* Transition of the page */
-.page {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease;
-    display: none;
+/* Animation of the page */
+/* Animation of page 1 */
+@keyframes slideRightIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-.page.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-    margin-top: 20px;
-}
-
-/* Transition of page 1 */
 .slide-right {
-    transform: translateX(100%);
+    animation: slideRightIn 0.5s ease;
 }
 
-.slide-right.active {
-    display: block;
-    transform: translateX(0);
+/* Animation of page 2 */
+@keyframes slideLeftIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-/* Transition of page 2 */
 .slide-left {
-    transform: translateX(-100%);
+    animation: slideLeftIn 0.5s ease;
 }
 
-.slide-left.active {
-    transform: translateX(0);
-    opacity: 1;
+/* Animation of page 3 */
+@keyframes fadeScale {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
-/* Transition of page 3 */
 .fade-scale {
-    transform: scale(0.8);
-}
-
-.fade-scale.active {
-    transform: scale(1);
-    opacity: 1;
+    animation: fadeScale 0.5s ease;
 }
 
 @media (max-width: 800px) {

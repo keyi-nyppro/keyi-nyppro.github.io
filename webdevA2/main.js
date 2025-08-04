@@ -565,20 +565,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Pause the game automatically when user click outside the minigame
-    // function autoPause(target) {
-    //     if (isGameRunning && !container.contains(target) && target !== startBtn && target !== stopBtn && !target.classList.contains()) {
-    //         clearInterval(intervalId);
-    //         clearInterval(timerInterval);
-    //         isPaused = true;
-
-    //         stopBtn.textContent = "Continue";
-    //     };
-    // };
-
     startBtn.addEventListener("click", startGame);
     stopBtn.addEventListener("click", togglePause);
-    document.addEventListener("click", function (e){
-        autoPause(e.target);
-    });
 });
